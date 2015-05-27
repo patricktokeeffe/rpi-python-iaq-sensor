@@ -1,1 +1,3 @@
 
+# Ignore compiled python
+*.py[cod]
