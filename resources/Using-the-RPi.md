@@ -13,7 +13,9 @@ Links to Resources for Using the Raspberry Pi
     * [Automatically login & launch script after boot][5]
 * Communication
     * [Running VNC server][7]
-
+    * [SSH setup][8]
+    * [Configure RPi for remote shell, desktop, file transfer][9
+    * [Phone home with reverse SSH][10]
 
   [1]: https://www.raspberrypi.org/forums/viewtopic.php?f=26&t=13711
   [2]: http://rohankapoor.com/2012/04/americanizing-the-raspberry-pi/
@@ -22,3 +24,6 @@ Links to Resources for Using the Raspberry Pi
   [5]: http://opentechguides.com/how-to/article/raspberry-pi/5/raspberry-pi-auto-start.html
   [6]: https://www.raspberrypi.org/forums/viewtopic.php?t=19308
   [7]: http://elinux.org/RPi_VNC_Server
+  [8]: http://elinux.org/RPi_Remote_Access
+  [9]: http://www.howtogeek.com/141157/how-to-configure-your-raspberry-pi-for-remote-shell-desktop-and-file-transfer/all/
+  [10]: http://www.tunnelsup.com/raspberry-pi-phoning-home-using-a-reverse-remote-ssh-tunnel
