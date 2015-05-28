@@ -9,7 +9,7 @@ import Adafruit_BMP.BMP085 as BMP085
 from time import sleep
 from datetime import datetime
 Psensor = BMP085.BMP085()
-print "P/T sensor ready."
+print "P/T sensor ready.\n"
 
 #####################################################################
 # Setup for K-30 CO2 Sensor
@@ -24,7 +24,7 @@ time.sleep(1)
 ####################################################################
 # Open a file with a name that contains the current date and time.
 dt = datetime.now().strftime('%Y%m%d_%H%M')
-fn = 'blamb_' + dt + '.txt'
+fn = 'jobson_' + dt + '.txt'
 f = open(fn,'w')
 f.close()
 
