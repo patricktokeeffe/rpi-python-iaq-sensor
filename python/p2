@@ -1,4 +1,0 @@
-#!/bin/bash
-sudo python /home/pi/work/projects/iaq/python/pressure.py &
-
-
