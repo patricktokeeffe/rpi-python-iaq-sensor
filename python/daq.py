@@ -1,3 +1,5 @@
+#!/usr/bin/python
+#
 # Python script to sample indoor air quality in Brian Lamb's home.
 #
 # Written by Von P. Walden (Using info from Adafruit and CO2meter.com)
