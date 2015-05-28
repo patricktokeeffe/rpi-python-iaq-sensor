@@ -48,7 +48,7 @@ try:
         co2 = (high*256) + low
 
         f.write(t + '  ' + '{0:0.1f}'.format(T) + '  ' + '{0:0.1f}'.format(P) + '  ' + '{0:0.1f}'.format(co2) + '\n')
-	print 'Temperature from BMP: ' + '{0:0.1f}*C'.format(T) + '  ' + 'Pressure from BMP: {0:0.1f} Pa'.format(P)+ '  ' + 'CO2: {0:0.1f} ppmv'.format(co2)
+        print 'Temperature from BMP: ' + '{0:0.1f}*C'.format(T) + '  ' + 'Pressure from BMP: {0:0.1f} Pa'.format(P)+ '  ' + 'CO2: {0:0.1f} ppmv'.format(co2)
         f.close()
         sleep(30)
 except KeyboardInterrupt:
