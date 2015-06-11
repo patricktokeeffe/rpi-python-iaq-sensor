@@ -1,3 +1,9 @@
 
 # Ignore compiled python
 *.py[cod]
+
+# Ignore third-party files
+/third-party/*
+!/third-party/_fetch.py
+!/third-party/_sources.txt
+!/third-party/readme.md

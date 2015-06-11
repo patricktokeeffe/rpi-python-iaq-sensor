@@ -1,0 +1,13 @@
+http://co2meters.com/Documentation/Datasheets/DS30-01%20-%20K30.pdf    K30 Datasheet (CO2meter.com).pdf
+http://co2meters.com/Documentation/Drawings/VDD-0019.PDF    K30 Dimensional drawings (CO2meter.com).pdf
+http://co2meters.com/Documentation/Other/SenseAirCommGuide.zip    K30 Communications manuals (CO2meter.com).zip
+https://cdn.shopify.com/s/files/1/0019/5952/files/Output_configuration_in_K30_rev1_01.pdf?7200313766361193609    K30 Output configuration (CO2meter.com).pdf
+http://cdn.shopify.com/s/files/1/0019/5952/files/calibration_procedure.pdf?1243553821    K30 Calibration procedure (SenseAir).pdf
+http://www.senseair.se/wp-content/uploads/2015/03/CO2-Engine-K30_PSP110-R7.pdf    K30 Specifications (SenseAir).pdf
+http://nlcpr.com/K30Module.pdf    K30 Technical information (Figaro).pdf
+http://www.adafruit.com/datasheets/BST-BMP180-DS000-09.pdf    BMP180 Datasheet.pdf
+https://www.adafruit.com/datasheets/1899_HTU21D.pdf    HTU21D Datasheet.pdf
+https://www.adafruit.com/datasheets/pi-connectors_schematic.pdf    Pi Connectors schematic.pdf
+https://www.adafruit.com/datasheets/pi-mech_schematic.pdf    Pi Mechanical schematic.pdf
+https://www.adafruit.com/datasheets/pi-specs.pdf    Pi Specifications.pdf
+https://www.raspberrypi.org/wp-content/uploads/2012/02/BCM2835-ARM-Peripherals.pdf    Pi - BCM2835 Arm Peripherals.pdf
