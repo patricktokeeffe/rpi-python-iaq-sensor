@@ -1,0 +1,10 @@
+[Unit]
+Description=BMP180 logging service
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/pressure-logger
+
+[Install]
+WantedBy=multi-user.target
+
