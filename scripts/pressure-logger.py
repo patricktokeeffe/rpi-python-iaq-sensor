@@ -17,12 +17,18 @@ import RPi.GPIO as GPIO
 
 import Adafruit_BMP.BMP085 as BMP
 
+import socket
+hostname = socket.gethostname()
 
 ##########    CONFIG    ###############
 log_dir = '/var/log/wsn/bmp180'
 log_file = 'pressure'
 
 interval = 10 # sec
+
+broker_addr = '10.1.1.4'
+broker_port = '1883'
+report_topic = 'home/{}/bmp180/state'.format(hostname)
 #######################################
 
 
@@ -48,15 +54,27 @@ log.addHandler(log_file)
 
 log.addHandler(logging.StreamHandler()) # for debugging
 
+#### MQTT integration
+client = paho.Client()
+client.connect(broker_addr, broker_port)
+
+report = '{{"tstamp": {ts:0.2f}, "P": {p:0.2f}, "T": {t:0.2f}}}'
 
 sensor = BMP.BMP085()
 
 while True:
     try:
-        tmpr = sensor.read_temperature()
-        press = sensor.read_pressure()/100.0
+        tmpr = sensor.read_temperature() # C
+        press = sensor.read_pressure()/100.0 # Pa->mbar
+
+        now = time.time()
         log.info('\t'.join(['{:0.2f}'.format(tmpr),
                             '{:0.2f}'.format(press)]))
+
+        client.publish(report_topic,
+                       report.format(ts=now, p=press, t=tmpr),
+                       qos=1, retain=True)
+
         time.sleep(interval)
     except (KeyboardInterrupt, SystemExit):
         raise
