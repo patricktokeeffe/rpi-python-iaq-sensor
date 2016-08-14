@@ -60,6 +60,7 @@ log.addHandler(logging.StreamHandler()) # for debugging
 #### MQTT integration
 client = paho.Client()
 client.connect(broker_addr, broker_port)
+client.loop_start()
 
 report = '{{"tstamp": {ts:0.2f}, "P": {p:0.2f}, "T": {t:0.2f}}}'
 
@@ -80,6 +81,7 @@ while True:
 
         time.sleep(interval)
     except (KeyboardInterrupt, SystemExit):
+        client.loop_stop()
         raise
     except:
         pass
