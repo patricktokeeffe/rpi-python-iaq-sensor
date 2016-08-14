@@ -1,5 +1,6 @@
 [Unit]
 Description=BMP180 logging service
+After=network-online.target
 
 [Service]
 Type=simple
