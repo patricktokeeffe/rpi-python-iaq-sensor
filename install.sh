@@ -1,11 +1,27 @@
 #!/bin/bash
 
+mkdir -p /etc/wsn
+
+# CO2 logger service
+echo "Installing K30 logging service executable..."
+cp scripts/k30-logger.py /usr/sbin/k30-logger
+chmod +x /usr/sbin/k30-logger
+cp etc/wsn/k30-logger.conf /etc/wsn/
+
+echo "Registering K30 logging service..."
+cp etc/systemd/sytem/k30-logger.service /etc/systemd/system/
+
+echo "Enabling K30 logging service start at boot..."
+systemctl enable k30-logger.service
+
+echo "Starting K30 logging service..."
+systemctl restart k30-logger.service
+
 
 # pressure-logger
-echo "Installing BMP logging service executable..."
+echo "Installing BMP180 logging service executable..."
 cp scripts/bmp180-logger.py /usr/sbin/bmp180-logger
 chmod +x /usr/sbin/bmp180-logger
-mkdir -p /etc/wsn
 cp etc/wsn/bmp180-logger.conf /etc/wsn/
 
 echo "Registering BMP180 logging service..."
@@ -14,6 +30,6 @@ cp etc/systemd/system/bmp180-logger.service /etc/systemd/system/
 echo "Enabling BMP180 logging service start at boot..."
 systemctl enable bmp180-logger.service
 
-echo "Starting BMP logging service..."
+echo "Starting BMP180 logging service..."
 systemctl restart bmp180-logger.service
 

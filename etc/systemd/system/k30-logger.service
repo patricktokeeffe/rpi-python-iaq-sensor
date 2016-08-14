@@ -1,0 +1,10 @@
+[Unit]
+Description=K30 logging service
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/k30-logger
+
+[Install]
+WantedBy=multi-user.target
+
