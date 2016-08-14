@@ -22,7 +22,7 @@ import socket
 #### read config file
 import ConfigParser as configparser
 c = configparser.ConfigParser()
-c.read('/etc/wsn/pressure-logger.conf')
+c.read('/etc/wsn/bmp180-logger.conf')
 
 interval = c.getint('main', 'interval')
 log_dir = c.get('logging', 'log_dir')
