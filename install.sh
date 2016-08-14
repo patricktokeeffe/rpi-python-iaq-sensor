@@ -9,7 +9,7 @@ chmod +x /usr/sbin/k30-logger
 cp etc/wsn/k30-logger.conf /etc/wsn/
 
 echo "Registering K30 logging service..."
-cp etc/systemd/sytem/k30-logger.service /etc/systemd/system/
+cp etc/systemd/system/k30-logger.service /etc/systemd/system/
 
 echo "Enabling K30 logging service start at boot..."
 systemctl enable k30-logger.service
