@@ -14,9 +14,6 @@ cp etc/systemd/system/k30-logger.service /etc/systemd/system/
 echo "Enabling K30 logging service start at boot..."
 systemctl enable k30-logger.service
 
-echo "Starting K30 logging service..."
-systemctl restart k30-logger.service
-
 
 # pressure-logger
 echo "Installing BMP180 logging service executable..."
@@ -30,6 +27,10 @@ cp etc/systemd/system/bmp180-logger.service /etc/systemd/system/
 echo "Enabling BMP180 logging service start at boot..."
 systemctl enable bmp180-logger.service
 
+
+systemctl daemon-reload
+echo "Starting K30 logging service..."
+systemctl restart k30-logger.service
 echo "Starting BMP180 logging service..."
 systemctl restart bmp180-logger.service
 
