@@ -37,11 +37,13 @@ except OSError:
     if not osp.isdir(log_dir):
         raise
 
+# HINT alt. solution to http://stackoverflow.com/a/27858760
+# XXXX does not handle partial-hour UTC offsets
+tzstr = '{:+03d}00'.format(-time.timezone/3600)
+tsfmt = '%Y-%m-%dT%H:%M:%S'+tzstr
+
 log_fmt = logging.Formatter('%(asctime)s\t%(message)s',
-                            datefmt='%Y-%m-%dT%H:%M:%S%z')
-log_fmt.converter = time.gmtime
-# HINT force timestamp to include a (correct) UTC offset
-# http://stackoverflow.com/a/27858760
+                            datefmt=tsfmt)
 tsv_file = TimedRotatingFileHandler(osp.join(log_dir, log_file))
 tsv_file.setFormatter(log_fmt)
 tsv_file.suffix = '%Y-%m-%d.tsv'
