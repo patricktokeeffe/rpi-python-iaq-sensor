@@ -3,7 +3,7 @@ Description=BMP180 logging service
 
 [Service]
 Type=simple
-ExecStart=/usr/sbin/pressure-logger
+ExecStart=/usr/sbin/bmp180-logger
 
 [Install]
 WantedBy=multi-user.target
