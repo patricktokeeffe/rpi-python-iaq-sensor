@@ -18,17 +18,20 @@ import RPi.GPIO as GPIO
 import Adafruit_BMP.BMP085 as BMP
 
 import socket
-hostname = socket.gethostname()
 
-##########    CONFIG    ###############
-log_dir = '/var/log/wsn/bmp180'
-log_file = 'pressure'
+#### read config file
+import ConfigParser as configparser
+c = configparser.ConfigParser()
+c.read('/etc/wsn/pressure-logger.conf')
 
-interval = 10 # sec
+interval = c.getint('main', 'interval')
+log_dir = c.get('logging', 'log_dir')
+log_file = c.get('logging', 'log_file')
 
-broker_addr = '10.1.1.4'
-broker_port = '1883'
-report_topic = 'home/{}/bmp180/state'.format(hostname)
+broker_addr = c.get('mqtt', 'broker_addr')
+broker_port = c.get('mqtt', 'broker_port')
+_template = c.get('mqtt', 'report_topic')
+report_topic = _template.format(hostname=socket.gethostname())
 #######################################
 
 
