@@ -15,13 +15,11 @@ Simple wifi (802.11bgn) sensor node for measuring:
 
 ### Setup
 
-#### Pressure Logger
-
 First, manually install dependencies:
 
 ```
 $ sudo apt-get update
-$ sudo apt-get install git build-essential python-dev python-smbus
+$ sudo apt-get install git build-essential python-dev python-smbus samba samba-common
 $ git clone https://github.com/adafruit/Adafruit_Python_BMP.git
 $ cd Adafruit_Python_BMP
 $ sudo python setup.py install

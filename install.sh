@@ -28,9 +28,18 @@ echo "Enabling BMP180 logging service start at boot..."
 systemctl enable bmp180-logger.service
 
 
+if [ ! -f /etc/samba/smb.conf.bak ]; then
+  echo "Backing up existing samba configuration file..."
+  cp /etc/samba/smb.conf /etc/samba/smb.conf.bak
+fi
+echo "Installing samba configuration..."
+cp etc/samba/smb.conf /etc/samba/
+
+
 systemctl daemon-reload
 echo "Starting K30 logging service..."
 systemctl restart k30-logger.service
 echo "Starting BMP180 logging service..."
 systemctl restart bmp180-logger.service
-
+echo "Starting samba service..."
+systemctl restart smbd
