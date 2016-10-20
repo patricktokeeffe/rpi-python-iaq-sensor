@@ -6,7 +6,11 @@ next version
 
 ### Fixes
 
-* avoid lock-up at start by async connecting to MQTT broker
+* Avoid lock-up at start by async connecting to MQTT broker
+
+### Other changes
+
+* Remove UTC offset from timestamp in data files
 
 
 v0.2
