@@ -66,7 +66,7 @@ client.loop_start()
 
 report = '{{"tstamp": {ts:0.2f}, "P": {p:0.2f}, "T": {t:0.2f}}}'
 
-sensor = BMP.BMP085()
+sensor = BMP.BMP085(busnum=1)
 
 while True:
     try:
