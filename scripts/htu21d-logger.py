@@ -17,6 +17,9 @@ sys.path.append('/home/pi/weather-station')
 from HTU21D import HTU21D
 htu = HTU21D()
 
+import socket
+import paho.mqtt.client as paho
+
 #### read config file
 import ConfigParser as configparser
 c = configparser.ConfigParser()
@@ -25,6 +28,10 @@ c.read('/etc/wsn/htu21d-logger.conf')
 interval = c.getint('main', 'interval')
 log_dir = c.get('logging', 'log_dir')
 log_file = c.get('logging', 'log_file')
+broker_addr = c.get('mqtt', 'broker_addr')
+broker_port = c.get('mqtt', 'broker_port')
+_template = c.get('mqtt', 'report_topic')
+report_topic = _template.format(hostname=socket.gethostname())
 #######################################
 
 
@@ -50,15 +57,24 @@ log = logging.getLogger(__name__)
 log.setLevel(logging.INFO)
 log.addHandler(log_file)
 
-# for urbanova
-rundir = '/run/aqnet/htu21d'
-run_T = os.path.join(rundir, 'T')
-run_RH = os.path.join(rundir, 'RH')
-try:
-    os.makedirs(rundir)
-except OSError:
-    if not osp.isdir(rundir):
-        raise
+log.addHandler(logging.StreamHandler()) # for journalctl output
+
+
+#### MQTT integration
+client = paho.Client()
+client.connect_async(broker_addr, broker_port)
+client.loop_start()
+report = '{{"tstamp": {ts:0.2f}, "T": {t:0.2f}, "RH": {rh:0.1f}}'
+
+## for urbanova
+#rundir = '/run/aqnet/htu21d'
+#run_T = os.path.join(rundir, 'T')
+#run_RH = os.path.join(rundir, 'RH')
+#try:
+#    os.makedirs(rundir)
+#except OSError:
+#    if not osp.isdir(rundir):
+#        raise
 
 
 while True:
@@ -72,16 +88,23 @@ while True:
                             '{:0.1f}'.format(RH)]))
 
         # for journalctl logs
-        print('{{"T": {0:0.2f}, "RH": {1:0.1f}}}'.format(T, RH))
+        #### FIXME - better to have JSON in journalctl
+        #### see above `logging.StreamHandler()`
+        #print('{{"T": {0:0.2f}, "RH": {1:0.1f}}}'.format(T, RH))
 
-        # for Itron Riva
-        with open(run_T, 'w') as f:
-            f.write('{:0.2f}'.format(T))
-        with open(run_RH, 'w') as f:
-            f.write('{:0.2f}'.format(RH))
+        ## for Itron Riva
+        #with open(run_T, 'w') as f:
+        #    f.write('{:0.2f}'.format(T))
+        #with open(run_RH, 'w') as f:
+        #    f.write('{:0.2f}'.format(RH))
+
+        client.publish(report_topic,
+                       report.format(ts=now, t=T, rh=RH),
+                       qos=1, retain=False)
 
         time.sleep(interval)
     except (KeyboardInterrupt, SystemExit):
+        client.loop_stop()
         raise
     except:
         time.sleep(15)
