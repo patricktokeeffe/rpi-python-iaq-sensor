@@ -52,5 +52,7 @@ echo "Starting K30 logging service..."
 systemctl restart k30-logger.service
 echo "Starting BMP180 logging service..."
 systemctl restart bmp180-logger.service
+echo "Starting HTU21D-F logging service..."
+systemctl restart htu21d-logger.service
 echo "Starting samba service..."
 systemctl restart smbd
