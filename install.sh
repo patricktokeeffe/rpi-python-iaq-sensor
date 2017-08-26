@@ -29,8 +29,6 @@ systemctl enable bmp180-logger.service
 
 
 # HTU21D-F daemon
-echo "Downloading HTU21D-F library files..."
-git clone https://github.com/raspberrypi/weather-station ~/
 echo "Instaling HTU21D logging service executable..."
 cp scripts/htu21d-logger.py /usr/sbin/htu21d-logger
 chmod +x /usr/sbin/htu21d-logger
