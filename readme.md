@@ -40,14 +40,18 @@ to an MQTT message broker.
 
 ### Installation
 
-First, manually install dependencies:
+First, manually install dependencies (as user `pi`):
 
 ```
+$ cd ~
 $ sudo apt-get update
 $ sudo apt-get install git build-essential python-dev python-smbus samba samba-common
+$
 $ git clone https://github.com/adafruit/Adafruit_Python_BMP.git
 $ cd Adafruit_Python_BMP
 $ sudo python setup.py install
+$
+$ git clone https://github.com/raspberrypi/weather-station
 ```
 
 Then run the installation script:
