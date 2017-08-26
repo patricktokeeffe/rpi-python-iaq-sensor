@@ -8,9 +8,11 @@ A Raspberry Pi-based wireless sensor node for measuring:
 
 * carbon dioxide ([K30; Senseair][1])
 * barometric pressure & temperature ([BMP180; Bosch][2])
+* ambient temperature & humidity ([HTU21D-F; MEAS][3])
 
   [1]: http://www.co2meter.com/products/k-30-co2-sensor-module
   [2]: https://www.adafruit.com/products/1603
+  [3]: https://adafru.it/1899
 
 
 ## Quick Start

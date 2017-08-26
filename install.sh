@@ -28,6 +28,17 @@ echo "Enabling BMP180 logging service start at boot..."
 systemctl enable bmp180-logger.service
 
 
+# HTU21D-F daemon
+echo "Instaling HTU21D logging service executable..."
+cp scripts/htu21d-logger.py /usr/sbin/htu21d-logger
+chmod +x /usr/sbin/htu21d-logger
+cp etc/wsn/htu21d-logger.conf /etc/wsn/
+echo "Registering HTU21D logging service..."
+cp etc/systemd/system/htu21d-logger.service /etc/systemd/system/
+echo "Enabling HTU21D logging service start at boot..."
+systemctl enable htu21d-logger.service
+
+
 if [ ! -f /etc/samba/smb.conf.bak ]; then
   echo "Backing up existing samba configuration file..."
   cp /etc/samba/smb.conf /etc/samba/smb.conf.bak
