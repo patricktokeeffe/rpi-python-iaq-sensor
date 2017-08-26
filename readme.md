@@ -45,7 +45,9 @@ First, manually install dependencies (as user `pi`):
 ```
 $ cd ~
 $ sudo apt-get update
-$ sudo apt-get install git build-essential python-dev python-smbus samba samba-common
+$ sudo apt-get install git build-essential python-dev python-smbus samba samba-common python-serial python-pip
+$
+$ sudo pip install paho-mqtt
 $
 $ git clone https://github.com/adafruit/Adafruit_Python_BMP.git
 $ cd Adafruit_Python_BMP
