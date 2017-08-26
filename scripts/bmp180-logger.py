@@ -45,7 +45,7 @@ except OSError:
 # HINT alt. solution to http://stackoveflow.com/a/27858760
 # XXXX does not handle partial-hour UTC offsets
 tzstr = '{:+03d}00'.format(-time.timezone/3600)
-tsfmt = '%Y-%m-%dT%H:%M:%S'+tzstr
+tsfmt = '%Y-%m-%dT%H:%M:%S'#+tzstr
 
 log_fmt = logging.Formatter('%(asctime)s\t%(message)s',
                             datefmt=tsfmt)
