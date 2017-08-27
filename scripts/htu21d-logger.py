@@ -10,7 +10,7 @@ from __future__ import print_function
 import os, os.path as osp
 import time
 import logging
-from logging.handlers import TimedRotatingFileHandler
+from logging.handlers import RotatingFileHandler
 
 import sys
 sys.path.append('/home/pi/weather-station')
@@ -49,8 +49,8 @@ tsfmt = '%Y-%m-%dT%H:%M:%S'#+tzstr
 
 log_fmt = logging.Formatter('%(asctime)s\t%(message)s',
                             datefmt=tsfmt)
-log_file = TimedRotatingFileHandler(osp.join(log_dir, log_file),
-                                    when='D', interval=30)
+log_file = RotatingFileHandler(osp.join(log_dir, log_file),
+                               maxBytes=1024*1024*10) # 10 MB
 log_file.setFormatter(log_fmt)
 log_file.suffix = '%Y-%m-%d.tsv'
 log = logging.getLogger(__name__)
