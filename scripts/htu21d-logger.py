@@ -64,7 +64,7 @@ log.addHandler(logging.StreamHandler()) # for journalctl output
 client = paho.Client()
 client.connect_async(broker_addr, broker_port)
 client.loop_start()
-report = '{{"tstamp": {ts:0.2f}, "T": {t:0.2f}, "RH": {rh:0.1f}}'
+report = '{{"tstamp": {ts:0.2f}, "T": {t:0.2f}, "RH": {rh:0.1f}}}'
 
 ## for urbanova
 #rundir = '/run/aqnet/htu21d'
