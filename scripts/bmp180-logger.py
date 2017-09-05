@@ -79,7 +79,7 @@ while True:
 
         client.publish(report_topic,
                        report.format(ts=now, p=press, t=tmpr),
-                       qos=1, retain=True)
+                       qos=1, retain=False)
 
         time.sleep(interval)
     except (KeyboardInterrupt, SystemExit):
